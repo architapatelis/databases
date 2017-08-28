@@ -1,0 +1,129 @@
+1) Given this table of values, which data types and meanings are the same? Which are different?
+
+values
+
+| number | value |
+| ------ | ------ |
+| 1 | Chen |
+| 2 | Jones |
+| 3 | 42 |
+| 4 | Viola Davis |
+
+  Ans: Each column has a different meaning, in other words number and value have different meaning. Each cell in the column has the same meaning, so 1,2,3,4 have the same meaning and Chen, Jones, 42, Viola Davis have the same meaning (even though 42 is a numeric value and Chen, Jones, Viola Davis are strings.)
+
+2) Explain in your own words when a database might be used. Explain when a text file might be used.
+
+  Ans: A database is built to support multiple concurrent users, which means that you can have multiple instances of your application running and multiple users can safely make changes to the database. This is not possible with a text file. Databases are also better when you are dealing with large amounts of structured data, and text files can be used to manage small amounts of unstructured data. The other problem with text files, is the limitation in file size. This means that data is stored in multiple text files, so when we need to retrieve information it's not as efficient as a database that has all the information stored in one location. A Database has an added benefit of being more secure, since only authorized users have access to it.
+
+3) Describe one difference between SQL and other programming languages.
+
+  Ans: Since SQL is a declarative rather than a procedural language we don't need to write an entire algorithm in order to interact with the database. We simply need to ask for the information we want, and SQL will figure out the most efficient way of getting the information for us.
+
+4) In your own words, explain how the pieces of a database system fit together at a high level.
+
+  Ans: A database is like a folder, and tables are like the various files that we would store in that folder. The S is SQL stands for 'Structured', in other words data is organized in a table using columns, rows and values/cells. This makes it easy to both store and retrieve relevant information. The SELECT clause determines which columns will be returned in the results, the FROM clause tells SQL which table it should search and the WHERE clause allows us to query data based on certain criteria. Once the search is completed, our application will receive the data in the from of another table.
+
+
+5) Explain the meaning of table, row, column, and value.
+
+persons
+
+| id | first_name | last_name |
+| ------ | ------ |
+| 1 | Archita | Patel |
+| 2 | Kevin | Lee |
+| 3 | Linda | Troung |
+| 4 | Kate | Smith |
+| cell | cell | cell
+
+  Ans: In the example above the table represents the data for 'persons', when we want information stored in this table we would use 'FROM persons' so SQL knows which table it needs to search. Columns represent the different categories, or a set of attributes associated with each person in the table. A single row holds the information for a specific person. The value, is each cell (each individual block of information).
+
+6) List 3 data types that can be used in a table.
+
+  Ans: A data type defines what kind of value a column can hold: Boolean, Integer, Date, Time, Objects etc.
+
+7) Given the Payments table below, answer the following questions:
+
+payments
+
+| date | payee | amount | memo |
+| ------------- |------------------------|------------|---------------|
+| 5/1/2016 | West Hill Apartments | 1500.00 | Rent |
+| 5/10/2016 | Best Toy Store | 37.00 | Beanie Babies |
+| 5/15/2016 | Mega Foods | 124.93 | Groceries |
+| 5/23/2016 | Shoes R Cool | 54.72 | Athletic shoes |
+
+What is the result, if we select all the dates and amounts?
+  Ans:
+
+  SELECT date, amount
+  FROM payments;
+
+  | date | amount |
+  | ------------- |------------------------|
+  | 5/1/2016 | 1500.00 |
+  | 5/10/2016 | 37.00 |
+  | 5/15/2016 | 124.93 |
+  | 5/23/2016 | 54.72 |
+
+
+What is the result, if we select all amounts greater than 500?
+  Ans:
+  SELECT amount
+  FROM payments
+  WHERE amount > 500;
+
+  |amount|
+  |------------|
+  |1500.00
+
+What is the result, be if we select all purchases made at Mega Foods?
+  Ans:
+  SELECT *
+  FROM payments
+  WHERE payee = 'Mega Foods';
+
+  | date | payee | amount | memo |
+  | ------------- |------------------------|------------|---------------|
+  | 5/15/2016 | Mega Foods | 124.93 | Groceries |
+
+
+8) Given the users table below, write the following SQL queries and their results:
+
+users
+
+| userid | name | email | signup | | ------|------------------------|------------|---------------|
+| 1 | Aleesia Algorithm | aleesia.algorithm@uw.edu | 2014-10-24 |
+| 2 | DeAndre Data | datad@comcast.net | 2008-01-20 |
+| 3 | Chris Collection | chris.collection@outlook.com | 2012-01-20 |
+| 4 | Brandy Boolean | bboolean@nasa.gov | 1999-10-15 |
+
+
+Select the email and sign-up date for the user named DeAndre Data.
+  Ans:
+  SELECT email, signup
+  FROM users
+  WHERE name = 'DeAndre Data';
+
+  | userid | name | email | signup | | ------|------------------------|------------|---------------|
+  | 2 | DeAndre Data | datad@comcast.net | 2008-01-20 |
+
+
+Select the user ID for the user with email 'aleesia.algorithm@uw.edu'.
+  Ans:
+  SELECT userid
+  FROM users
+  WHERE email = 'aleesia.algorithm@uw.edu';
+
+  | userid |
+  | ----------- |
+  | 1 |
+
+Select all the columns for the user ID equal to 4.
+  Ans:
+  SELECT *
+  FROM users
+  WHERE userid = 4;
+
+  | userid | name | email | signup | | ------|------------------------|------------|---------------|
+  | 4 | Brandy Boolean | bboolean@nasa.gov | 1999-10-15 |
